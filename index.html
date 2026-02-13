@@ -51,17 +51,18 @@
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 50px 24px 60px; 
+      padding: 34px 24px 60px; /* tighter top */
     }
 
     .logo img {
-      width: 240px;           
-      margin-bottom: 10px;    
+      width: 240px;
+      margin-bottom: 6px; /* tighter logo -> headline */
     }
 
     h1 {
       font-size: 44px;
       font-weight: 700;
+      margin-top: -8px;  /* pull headline closer to logo */
       margin-bottom: 14px;
     }
 
@@ -107,25 +108,36 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 40px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
+      align-items: stretch;
     }
 
     .feature {
       background: var(--navy);
       padding: 28px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      min-height: 260px; /* keeps cards visually even */
     }
 
     .feature h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
+      font-size: 20px;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      min-height: 56px; /* ensures title block aligns across cards */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .feature p {
       color: var(--medium-grey);
-      font-size: 14px;
+      font-size: 15px;
+      margin-top: auto; /* align body text consistently */
     }
 
     footer {
@@ -143,7 +155,6 @@
     .socials {
       margin-top: 20px;
     }
-
   </style>
 </head>
 
@@ -198,9 +209,9 @@
     </div>
 
     <div class="socials">
-      <a href="https://x.com/clickument" target="_blank">X</a>
-      <a href="https://www.linkedin.com/company/clickument/" target="_blank">LinkedIn</a>
-      <a href="https://www.instagram.com/clickument" target="_blank">Instagram</a>
+      <a href="https://x.com/clickument" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://www.linkedin.com/company/clickument/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.instagram.com/clickument" target="_blank" rel="noopener noreferrer">Instagram</a>
     </div>
 
     <div style="margin-top:20px;">
