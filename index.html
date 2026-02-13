@@ -51,18 +51,18 @@
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 34px 24px 60px; /* tighter top */
+      padding: 34px 24px 60px;
     }
 
     .logo img {
       width: 240px;
-      margin-bottom: 6px; /* tighter logo -> headline */
+      margin-bottom: 6px;
     }
 
     h1 {
       font-size: 44px;
       font-weight: 700;
-      margin-top: -8px;  /* pull headline closer to logo */
+      margin-top: -8px;
       margin-bottom: 14px;
     }
 
@@ -84,9 +84,10 @@
       padding: 15px 34px;
       background: var(--green);
       color: white;
-      text-decoration: none;
+      border: none;
       border-radius: 8px;
       font-weight: 600;
+      cursor: pointer;
       transition: background 0.2s ease;
     }
 
@@ -121,14 +122,14 @@
       display: flex;
       flex-direction: column;
       text-align: center;
-      min-height: 260px; /* keeps cards visually even */
+      min-height: 260px;
     }
 
     .feature h3 {
       font-size: 20px;
       line-height: 1.25;
       margin-bottom: 14px;
-      min-height: 56px; /* ensures title block aligns across cards */
+      min-height: 56px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -137,7 +138,7 @@
     .feature p {
       color: var(--medium-grey);
       font-size: 15px;
-      margin-top: auto; /* align body text consistently */
+      margin-top: auto;
     }
 
     footer {
@@ -173,7 +174,16 @@
       Built for clarity, evidence, and precision.
     </p>
 
-    <a href="#" class="cta">Get Early Access</a>
+    <!-- TALLY BUTTON -->
+    <button class="cta"
+      data-tally-open="xXaba9"
+      data-tally-layout="modal"
+      data-tally-width="500"
+      data-tally-emoji-text="👋"
+      data-tally-emoji-animation="wave">
+      Get Early Access
+    </button>
+
     <div class="launch-note">
       Launching soon on the Chrome Web Store.
     </div>
@@ -218,6 +228,9 @@
       Contact: <a href="mailto:hello@clickument.co.uk">hello@clickument.co.uk</a>
     </div>
   </footer>
+
+  <!-- TALLY SCRIPT -->
+  <script src="https://tally.so/widgets/embed.js"></script>
 
 </body>
 </html>
