@@ -1,236 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Clickument — Turn Clicks Into Documentation</title>
-  <meta name="description" content="Clickument transforms browser actions into structured, step-by-step documentation. Built for clarity, evidence, and precision." />
+<title>Clickument — Turn Clicks Into Documentation</title>
+<meta name="description" content="Clickument transforms browser actions into structured, step-by-step documentation. Built for clarity, evidence, and precision." />
 
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Clickument — Turn Clicks Into Documentation" />
-  <meta property="og:description" content="Capture structured documentation as you work. Launching soon on the Chrome Web Store." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://clickument.com" />
-  <meta property="og:image" content="https://clickument.com/assets/logo.png" />
+<!-- OpenGraph -->
+<meta property="og:title" content="Clickument — Turn Clicks Into Documentation" />
+<meta property="og:description" content="Capture structured documentation as you work. Launching soon on the Chrome Web Store." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://clickument.com" />
+<meta property="og:image" content="https://clickument.com/assets/logo.png" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Clickument — Turn Clicks Into Documentation" />
-  <meta name="twitter:description" content="Structured workflow documentation built for clarity and precision." />
-  <meta name="twitter:image" content="https://clickument.com/assets/logo.png" />
+<link rel="icon" href="assets/logo.png" />
 
-  <link rel="icon" href="assets/logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #3FAE4B;
+  --green-dark: #369944;
+  --navy: #0E1A2B;
+  --navy-secondary: #111F34;
+  --medium-grey: #A0A8B5;
+}
 
-  <style>
-    :root {
-      --green: #3FAE4B;
-      --green-dark: #369944;
-      --navy: #0E1A2B;
-      --navy-secondary: #111F34;
-      --medium-grey: #A0A8B5;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+body {
+  background: linear-gradient(180deg, #0E1A2B 0%, #0B1624 100%);
+  color: white;
+  line-height: 1.6;
+  text-align: center;
+}
 
-    body {
-      background: var(--navy);
-      color: white;
-      line-height: 1.6;
-      text-align: center;
-    }
+/* Hero */
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 34px 24px 60px;
-    }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  animation: fadeIn 0.8s ease forwards;
+}
 
-    .logo img {
-      width: 240px;
-      margin-bottom: 6px;
-    }
+.logo img {
+  width: 260px;
+  margin-bottom: 6px;
+}
 
-    h1 {
-      font-size: 44px;
-      font-weight: 700;
-      margin-top: -8px;
-      margin-bottom: 14px;
-    }
+h1 {
+  font-size: 46px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
 
-    .tagline {
-      font-size: 18px;
-      color: var(--medium-grey);
-      max-width: 640px;
-      margin: 0 auto 42px;
-    }
+.sub-headline {
+  font-size: 18px;
+  color: var(--medium-grey);
+  max-width: 650px;
+  margin: 0 auto 40px;
+}
 
-    .launch-note {
-      font-size: 14px;
-      color: var(--medium-grey);
-      margin-top: 14px;
-    }
+.cta {
+  display: inline-block;
+  padding: 15px 36px;
+  background: var(--green);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
 
-    .cta {
-      display: inline-block;
-      padding: 15px 34px;
-      background: var(--green);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
+.cta:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+}
 
-    .cta:hover {
-      background: var(--green-dark);
-    }
+/* Product Preview */
 
-    .section {
-      padding: 80px 24px;
-      background: var(--navy-secondary);
-    }
+.product-preview {
+  margin: 60px auto 100px;
+  max-width: 900px;
+  height: 380px;
+  background: var(--navy-secondary);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--medium-grey);
+  font-size: 18px;
+  animation: fadeIn 1.2s ease forwards;
+}
 
-    .section h2 {
-      font-size: 28px;
-      margin-bottom: 40px;
-    }
+/* Sections */
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 40px;
-      max-width: 1000px;
-      margin: 0 auto;
-      align-items: stretch;
-    }
+.section {
+  padding: 100px 24px;
+  background: var(--navy-secondary);
+}
 
-    .feature {
-      background: var(--navy);
-      padding: 28px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      min-height: 260px;
-    }
+.section h2 {
+  font-size: 30px;
+  margin-bottom: 60px;
+}
 
-    .feature h3 {
-      font-size: 20px;
-      line-height: 1.25;
-      margin-bottom: 14px;
-      min-height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+/* Problem Section */
 
-    .feature p {
-      color: var(--medium-grey);
-      font-size: 15px;
-      margin-top: auto;
-    }
+.problem-list {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  color: var(--medium-grey);
+  font-size: 18px;
+  line-height: 2;
+}
 
-    footer {
-      padding: 40px 24px;
-      font-size: 14px;
-      color: var(--medium-grey);
-    }
+/* Feature Grid */
 
-    footer a {
-      color: var(--green);
-      text-decoration: none;
-      margin: 0 10px;
-    }
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 
-    .socials {
-      margin-top: 20px;
-    }
-  </style>
+.feature {
+  background: var(--navy);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.2s ease;
+}
+
+.feature:hover {
+  transform: translateY(-6px);
+  border-color: rgba(63,174,75,0.4);
+}
+
+.feature h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.feature p {
+  color: var(--medium-grey);
+}
+
+/* Who It's For */
+
+.who-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+/* Secondary CTA */
+
+.secondary-cta {
+  padding: 100px 24px;
+}
+
+/* Footer */
+
+footer {
+  padding: 50px 24px;
+  font-size: 14px;
+  color: var(--medium-grey);
+}
+
+footer a {
+  color: var(--green);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div class="logo">
-      <img src="assets/logo.png" alt="Clickument Logo">
-    </div>
-
-    <h1>Turn Clicks Into Documentation</h1>
-
-    <p class="tagline">
-      Capture structured workflow documentation as you work.
-      Built for clarity, evidence, and precision.
-    </p>
-
-    <!-- TALLY BUTTON -->
-    <button class="cta"
-      data-tally-open="xXaba9"
-      data-tally-layout="modal"
-      data-tally-width="500"
-      data-tally-emoji-text="👋"
-      data-tally-emoji-animation="wave">
-      Get Early Access
-    </button>
-
-    <div class="launch-note">
-      Launching soon on the Chrome Web Store.
-    </div>
-
+  <div class="logo">
+    <img src="assets/logo.png" alt="Clickument Logo">
   </div>
 
-  <div class="section">
-    <h2>What Clickument Does</h2>
+  <h1>Turn Clicks Into Documentation</h1>
 
-    <div class="feature-grid">
-      <div class="feature">
-        <h3>Capture Actions Automatically</h3>
-        <p>Convert browser interactions into structured, step-by-step documentation.</p>
-      </div>
+  <p class="sub-headline">
+    Built for QA engineers, product teams, and founders who need structured proof of work.
+  </p>
 
-      <div class="feature">
-        <h3>Export Clean Documentation</h3>
-        <p>Generate documentation ready for test cases, onboarding, or support guides.</p>
-      </div>
+  <button class="cta"
+    data-tally-open="xXaba9"
+    data-tally-layout="modal"
+    data-tally-width="500">
+    Get Early Access
+  </button>
 
-      <div class="feature">
-        <h3>Structured by Design</h3>
-        <p>Built for QA teams, product teams, and internal documentation.</p>
-      </div>
+</div>
+
+<div class="product-preview">
+  Product preview coming soon.
+</div>
+
+<div class="section">
+  <h2>The Problem</h2>
+  <div class="problem-list">
+    • Screenshots are messy and inconsistent<br>
+    • Documentation takes too long to create<br>
+    • QA evidence is manual and repetitive<br>
+    • Onboarding workflows lack structure
+  </div>
+</div>
+
+<div class="section">
+  <h2>What Clickument Does</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <h3>Capture Actions Automatically</h3>
+      <p>Convert browser interactions into structured, step-by-step documentation.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Export Clean Documentation</h3>
+      <p>Generate documentation ready for test cases, onboarding, or support guides.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Structured by Design</h3>
+      <p>Built for QA teams, product teams, and internal documentation.</p>
     </div>
   </div>
+</div>
 
-  <footer>
-    <div>
-      <a href="privacy.html">Privacy Policy</a>
-      |
-      <a href="terms.html">Terms</a>
-    </div>
+<div class="section">
+  <h2>Who It’s For</h2>
+  <div class="who-grid">
+    <div>QA Engineers</div>
+    <div>Product Teams</div>
+    <div>Startup Founders</div>
+    <div>Internal Documentation Teams</div>
+  </div>
+</div>
 
-    <div class="socials">
-      <a href="https://x.com/clickument" target="_blank" rel="noopener noreferrer">X</a>
-      <a href="https://www.linkedin.com/company/clickument/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://www.instagram.com/clickument" target="_blank" rel="noopener noreferrer">Instagram</a>
-    </div>
+<div class="secondary-cta">
+  <h2>Ready to simplify documentation?</h2>
+  <br><br>
+  <button class="cta"
+    data-tally-open="xXaba9"
+    data-tally-layout="modal"
+    data-tally-width="500">
+    Join Early Access
+  </button>
+</div>
 
-    <div style="margin-top:20px;">
-      Contact: <a href="mailto:hello@clickument.co.uk">hello@clickument.co.uk</a>
-    </div>
-  </footer>
+<footer>
+  <div>
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms</a>
+  </div>
 
-  <!-- TALLY SCRIPT -->
-  <script src="https://tally.so/widgets/embed.js"></script>
+  <div style="margin-top:20px;">
+    <a href="https://x.com/clickument" target="_blank">X</a>
+    <a href="https://www.linkedin.com/company/clickument/" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/clickument" target="_blank">Instagram</a>
+  </div>
+
+  <div style="margin-top:20px;">
+    Contact: <a href="mailto:hello@clickument.co.uk">hello@clickument.co.uk</a>
+  </div>
+</footer>
+
+<script src="https://tally.so/widgets/embed.js"></script>
 
 </body>
 </html>
