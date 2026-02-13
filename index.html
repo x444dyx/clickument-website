@@ -114,29 +114,31 @@ h1 {
   max-width: 700px;
   margin: 0 auto;
   background: var(--navy);
-  padding: 40px 50px;
+  padding: 50px 60px;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.06);
-  text-align: left;
+  text-align: center; /* center everything */
   transition: all 0.2s ease;
-}
-
-.problem-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(63,174,75,0.4);
 }
 
 .problem-card ul {
   list-style: none;
   color: var(--medium-grey);
-  font-size: 18px;
-  line-height: 2;
+  font-size: 19px;
+  line-height: 2.1;
+  padding: 0;
+}
+
+.problem-card li {
+  margin-bottom: 14px;
 }
 
 .problem-card li::before {
-  content: "• ";
+  content: "•";
   color: var(--green);
-  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-right: 8px;
 }
 
 /* Feature Grid */
