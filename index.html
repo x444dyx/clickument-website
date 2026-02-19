@@ -12,6 +12,7 @@
 <style>
 :root{
   --green:#3FAE4B;
+  --green-2:#7CFF8C;
   --bg0:#071220;
   --bg1:#0B1624;
   --text:#EAF0F7;
@@ -23,43 +24,42 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif;}
+
 body{
   color:var(--text);
-  background:linear-gradient(180deg,var(--bg0),var(--bg1));
+  background:
+    radial-gradient(1200px 800px at 30% 10%, rgba(63,174,75,.08), transparent 60%),
+    radial-gradient(900px 700px at 80% 0%, rgba(0,170,255,.08), transparent 55%),
+    linear-gradient(180deg,var(--bg0),var(--bg1));
 }
 
-/* ================= LAYOUT ================= */
+/* ================= HERO ================= */
 
 .page{
   width:min(1200px,calc(100% - 40px));
   margin:44px auto;
 }
 
-/* ================= HERO ================= */
-
-.hero-shell,
-.section-shell{
+.hero-shell{
   border-radius:var(--radius-outer);
   padding:18px;
-  margin-top:60px;
   background:
-    radial-gradient(1200px 700px at 70% 40%, rgba(63,174,75,.10), transparent 60%),
+    radial-gradient(1200px 700px at 70% 40%, rgba(63,174,75,.25), transparent 60%),
     linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
   box-shadow:var(--shadow-1);
 }
 
-.hero-frame,
-.section-frame{
-  border-radius:var(--radius-inner);
-  padding:100px 60px;
-  background:linear-gradient(180deg, rgba(6,14,26,.92), rgba(6,14,26,.82));
-  border:1px solid rgba(255,255,255,.08);
+.hero-frame{
   position:relative;
+  border-radius:var(--radius-inner);
+  min-height:640px;
+  background:
+    radial-gradient(1000px 650px at 70% 40%, rgba(63,174,75,.35), transparent 62%),
+    linear-gradient(135deg, rgba(6,14,26,.95), rgba(6,14,26,.82));
+  border:1px solid rgba(255,255,255,.10);
   overflow:hidden;
 }
-
-/* ================= NAV ================= */
 
 .hero-nav{
   position:absolute;
@@ -69,49 +69,88 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  z-index:20;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:16px;
   font-weight:700;
 }
 
 .brand img{
-  width:48px;
+  width:64px; /* BIGGER LOGO */
   height:auto;
-  filter:drop-shadow(0 6px 18px rgba(0,0,0,.4));
+  filter:drop-shadow(0 10px 25px rgba(0,0,0,.4));
 }
 
 .brand span{
-  font-size:22px;
+  font-size:26px;
 }
 
 .nav-links{
   display:flex;
   gap:28px;
   font-size:14px;
-  color:rgba(255,255,255,.7);
+  color:rgba(255,255,255,.75);
 }
-
-/* ================= HERO TEXT ================= */
 
 h1{
+  margin-top:160px;
+  text-align:center;
   font-size:64px;
-  text-align:center;
   font-weight:800;
-  margin-top:100px;
 }
 
-h2{
+.hero-sub{
   text-align:center;
-  margin-bottom:60px;
-  font-size:32px;
+  margin-top:20px;
+  color:var(--muted);
+  font-size:18px;
 }
 
-/* ================= SECTION GLOW ================= */
+/* Floating step cards */
+.hero-visual{
+  position:absolute;
+  right:80px;
+  bottom:80px;
+}
 
+.step-card{
+  width:260px;
+  padding:18px;
+  background:rgba(255,255,255,.08);
+  border-radius:16px;
+  margin-bottom:20px;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+/* ================= SECTIONS ================= */
+
+.section-shell{
+  width:min(1200px,calc(100% - 40px));
+  margin:60px auto;
+  border-radius:var(--radius-outer);
+  padding:18px;
+  background:
+    radial-gradient(1200px 700px at 70% 40%, rgba(63,174,75,.12), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:var(--shadow-1);
+}
+
+.section-frame{
+  border-radius:var(--radius-inner);
+  padding:90px 40px;
+  background:linear-gradient(180deg, rgba(6,14,26,.92), rgba(6,14,26,.82));
+  border:1px solid rgba(255,255,255,.08);
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* Mouse glow */
 .section-frame::before{
   content:"";
   position:absolute;
@@ -135,8 +174,12 @@ h2{
   z-index:2;
 }
 
-/* ================= CARDS ================= */
+h2{
+  margin-bottom:60px;
+  font-size:32px;
+}
 
+/* Card grids */
 .grid{
   display:grid;
   gap:26px;
@@ -150,7 +193,6 @@ h2{
   border:1px solid rgba(255,255,255,.08);
   border-radius:18px;
   padding:28px;
-  text-align:center;
   transition:.25s ease;
 }
 
@@ -167,7 +209,7 @@ h2{
 
 footer{
   text-align:center;
-  padding:60px 0;
+  padding:80px 20px;
   color:var(--muted);
 }
 
@@ -179,8 +221,8 @@ footer{
 }
 
 .socials a{
-  width:36px;
-  height:36px;
+  width:40px;
+  height:40px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -199,13 +241,6 @@ footer{
   height:18px;
   fill:white;
 }
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:900px){
-  h1{font-size:44px;}
-  .hero-frame,.section-frame{padding:70px 30px;}
-}
 </style>
 </head>
 
@@ -221,10 +256,12 @@ footer{
 <img src="assets/Clickument_Transparent.PNG" alt="Clickument Logo">
 <span>Clickument</span>
 </div>
+
 <div class="nav-links">
-<a href="#">Pricing</a>
-<a href="#">Documentation</a>
-<a href="#">Blog</a>
+<a href="#pricing">Pricing</a>
+<a href="#documentation">Documentation</a>
+<a href="#blog">Blog</a>
+<a href="#login">Login</a>
 </div>
 </header>
 
@@ -232,6 +269,10 @@ footer{
 Turn Clicks Into<br>
 <span style="color:var(--green)">Structured Documentation</span>
 </h1>
+
+<p class="hero-sub">
+Capture screenshots, generate steps, and export polished documentation in seconds.
+</p>
 
 </div>
 </section>
