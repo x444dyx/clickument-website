@@ -610,66 +610,91 @@
     /* Responsive */
 @media (max-width: 980px){
 
-  /* NAV */
+  /* ===== NAV ===== */
   .hero-nav{
-    padding-right: 6px;
+    top:18px;
+    left:18px;
+    right:18px;
   }
 
-  .nav-links{
-    display:none;
+  .brand{
+    gap:10px;
   }
 
-  .nav-right{
-    gap:16px;
-  }
-
-  .nav-cta{
-    padding:10px 16px;
-    font-size:13px;
+  .brand img{
+    width:48px;
   }
 
   .brand span{
     font-size:18px;
   }
 
-  /* HERO LAYOUT */
+  .nav-right{
+    gap:14px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-cta{
+    padding:10px 16px;
+    font-size:14px;
+  }
+
+  /* ===== HERO GRID ===== */
   .hero-content{
-    grid-template-columns: 1fr;
-    padding: 100px 22px 36px;
-    gap: 22px;
+    grid-template-columns:1fr;
+    padding:110px 22px 40px;
+    gap:30px;
   }
 
+  /* ===== TYPOGRAPHY ===== */
   h1{
-    font-size: 40px;
-    line-height: 1.1;
+    font-size:42px;
+    line-height:1.1;
+    letter-spacing:-.5px;
   }
 
+  .hero-sub{
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  /* ===== BUTTONS ===== */
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+    gap:14px;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  /* ===== FLOATING CARDS ===== */
   .hero-visual{
-    height: 340px;
-    margin-top: 10px;
+    height:360px;
+    margin-top:10px;
   }
 
   .step-card{
-    width: 88%;
-    left: 50%;
-    right: auto;
-  }
-
-  .card1{
-    top: 40px;
-    transform: translateX(-50%) rotate(-6deg);
+    width:88%;
+    left:50%;
+    right:auto;
+    transform:translateX(-50%) rotate(-6deg);
   }
 
   .card2{
-    top: 160px;
-    transform: translateX(-50%) rotate(6deg);
+    top:160px;
+    transform:translateX(-50%) rotate(6deg);
   }
 
   .card3{
-    top: 270px;
-    transform: translateX(-50%) rotate(-7deg);
+    top:280px;
+    transform:translateX(-50%) rotate(-7deg);
   }
-
 }
 
     @media (max-width: 520px){
