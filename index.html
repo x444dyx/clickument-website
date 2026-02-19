@@ -1,313 +1,873 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Clickument — Turn Clicks Into Documentation</title>
+  <title>Clickument — Turn Clicks Into Documentation</title>
+  <meta name="description" content="Clickument transforms browser actions into structured, step-by-step documentation. Built for clarity, evidence, and precision." />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Clickument — Turn Clicks Into Documentation" />
+  <meta property="og:description" content="Capture structured documentation as you work. Launching soon on the Chrome Web Store." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://clickument.com" />
+  <meta property="og:image" content="https://clickument.com/assets/logo.png" />
 
-<style>
-:root {
-  --green: #3FAE4B;
-  --green-bright: #46c354;
-  --navy: #071421;
-  --text-dim: #A0A8B5;
-}
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0E1A2B">
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-body {
-  background: #0b1118;
-  color: white;
-}
+  <style>
+    :root{
+      --green:#3FAE4B;
+      --green-2:#7CFF8C;
+      --green-dark:#2F8E3A;
 
-/* ================= HERO ================= */
+      --bg0:#071220;
+      --bg1:#0B1624;
+      --panel:#0E1A2B;
+      --panel2:#111F34;
 
-.hero-wrapper {
-  padding: 40px;
-}
+      --text:#EAF0F7;
+      --muted:#A0A8B5;
 
-.hero-shell {
-  position: relative;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  min-height: 760px;
-  border-radius: 56px;
-  overflow: hidden;
-  padding: 70px 80px;
-  background:
-    radial-gradient(circle at 70% 35%, rgba(63,174,75,0.55), transparent 50%),
-    radial-gradient(circle at 85% 80%, rgba(63,174,75,0.35), transparent 60%),
-    linear-gradient(135deg, #071421 0%, #0b1e2e 100%);
-  box-shadow:
-    0 0 120px rgba(63,174,75,0.18),
-    inset 0 0 120px rgba(255,255,255,0.02);
-}
+      --radius-outer:44px;
+      --radius-inner:38px;
 
-/* NAV */
+      --shadow-1: 0 24px 80px rgba(0,0,0,.55);
+      --shadow-2: 0 10px 40px rgba(0,0,0,.35);
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  z-index: 3;
-}
+      --glass: rgba(255,255,255,.07);
+      --glass-2: rgba(255,255,255,.10);
+      --stroke: rgba(255,255,255,.12);
+      --stroke-soft: rgba(255,255,255,.08);
+    }
 
-.nav img {
-  width: 190px;
-}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 30% 10%, rgba(63,174,75,.10), transparent 60%),
+                  radial-gradient(900px 700px at 80% 0%, rgba(99, 164, 255,.08), transparent 55%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      line-height:1.6;
+    }
 
-.nav-links {
-  display: flex;
-  gap: 36px;
-  align-items: center;
-  font-size: 15px;
-}
+    a{color:inherit;text-decoration:none;}
+    .page{
+      width:min(1200px, calc(100% - 40px));
+      margin: 44px auto 0;
+    }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  opacity: 0.85;
-}
+    /* ========= HERO FRAME (mock-like) ========= */
+    .hero-shell{
+      position:relative;
+      border-radius: var(--radius-outer);
+      padding: 18px;
+      background:
+        radial-gradient(1200px 700px at 70% 40%, rgba(63,174,75,.25), transparent 60%),
+        radial-gradient(800px 700px at 10% 20%, rgba(23, 86, 255,.18), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      box-shadow: var(--shadow-1);
+      border: 1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+    }
 
-.nav-links .btn-small {
-  padding: 10px 18px;
-  background: var(--green);
-  border-radius: 10px;
-  font-weight: 600;
-}
+    .hero-frame{
+      position:relative;
+      border-radius: var(--radius-inner);
+      min-height: 640px;
+      overflow:hidden;
+      background:
+        radial-gradient(1000px 650px at 70% 40%, rgba(63,174,75,.36), transparent 62%),
+        radial-gradient(900px 700px at 10% 20%, rgba(15, 90, 255,.22), transparent 58%),
+        linear-gradient(135deg, rgba(6,14,26,.95), rgba(6,14,26,.82));
+      border: 1px solid rgba(255,255,255,.10);
+    }
 
-/* HERO CONTENT */
+    /* Soft vignette + subtle grain */
+    .hero-frame::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(1400px 800px at 50% 40%, rgba(0,0,0,0), rgba(0,0,0,.55)),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 1px, transparent 1px, transparent 3px);
+      opacity:.22;
+      pointer-events:none;
+      mix-blend-mode: overlay;
+    }
 
-.hero-content {
-  margin-top: 120px;
-  max-width: 640px;
-  position: relative;
-  z-index: 3;
-}
+    /* Animated glow bloom (very subtle) */
+    .hero-glow{
+      position:absolute; inset:-40%;
+      background:
+        radial-gradient(circle at 60% 45%, rgba(63,174,75,.22), transparent 55%),
+        radial-gradient(circle at 75% 60%, rgba(63,174,75,.12), transparent 52%),
+        radial-gradient(circle at 20% 35%, rgba(70, 140, 255,.10), transparent 60%);
+      filter: blur(48px) saturate(1.2);
+      opacity:.85;
+      animation: glowDrift 10s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+    @keyframes glowDrift{
+      from{ transform: translate3d(-20px,-10px,0) scale(1.02); }
+      to  { transform: translate3d(30px, 20px,0) scale(1.06); }
+    }
 
-.badge {
-  display: inline-block;
-  padding: 10px 18px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 999px;
-  font-size: 14px;
-  margin-bottom: 32px;
-}
+    /* Top nav */
+    .hero-nav{
+      position:absolute;
+      top: 22px;
+      left: 28px;
+      right: 28px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      z-index: 20;
+      pointer-events:auto;
+    }
 
-h1 {
-  font-size: 68px;
-  line-height: 1.05;
-  font-weight: 800;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+      opacity:.98;
+      user-select:none;
+    }
+    .brand img{
+      width:44px;height:44px;
+      display:block;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
+    }
+    .brand span{
+      font-size:22px;
+    }
 
-h1 span {
-  color: var(--green-bright);
-}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      color: rgba(234,240,247,.72);
+      font-weight:500;
+      font-size:14px;
+    }
+    .nav-links a{opacity:.9; transition:opacity .2s ease;}
+    .nav-links a:hover{opacity:1;}
 
-.subtext {
-  margin-top: 28px;
-  font-size: 18px;
-  color: var(--text-dim);
-}
+    .nav-cta{
+      padding:10px 16px;
+      border-radius: 12px;
+      background: rgba(63,174,75,.22);
+      border: 1px solid rgba(63,174,75,.35);
+      box-shadow: 0 12px 30px rgba(63,174,75,.10);
+      color: rgba(234,240,247,.92);
+      font-weight:600;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .nav-cta:hover{
+      transform: translateY(-1px);
+      background: rgba(63,174,75,.28);
+      border-color: rgba(63,174,75,.50);
+    }
 
-.cta-row {
-  margin-top: 45px;
-  display: flex;
-  gap: 18px;
-}
+    /* Hero content grid */
+    .hero-content{
+      position:relative;
+      z-index: 10;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      padding: 130px 64px 72px;
+      align-items:center;
+    }
 
-.btn-primary {
-  padding: 18px 36px;
-  background: var(--green);
-  border-radius: 14px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(234,240,247,.86);
+      font-size: 13px;
+      font-weight:600;
+      width: fit-content;
+      box-shadow: var(--shadow-2);
+    }
+    .pill .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: radial-gradient(circle, var(--green-2), var(--green));
+      box-shadow: 0 0 0 6px rgba(63,174,75,.10);
+    }
 
-.btn-secondary {
-  padding: 18px 36px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 14px;
-  font-weight: 500;
-  border: 1px solid rgba(255,255,255,0.1);
-  cursor: pointer;
-}
+    h1{
+      margin-top: 18px;
+      font-size: 64px;
+      line-height: 1.04;
+      letter-spacing: -.9px;
+      font-weight: 800;
+      text-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .h1-accent{
+      color: var(--green);
+      display:block;
+      margin-top: 6px;
+    }
 
-/* STEP CARDS */
+    .hero-sub{
+      margin-top: 18px;
+      max-width: 560px;
+      color: rgba(160,168,181,.92);
+      font-size: 18px;
+    }
 
-.steps-container {
-  position: absolute;
-  right: 120px;
-  top: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-  pointer-events: none; /* critical */
-}
+    .hero-actions{
+      margin-top: 26px;
+      display:flex;
+      gap: 16px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
 
-.step {
-  width: 360px;
-  padding: 34px;
-  border-radius: 28px;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(22px);
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.55),
-    0 0 60px rgba(63,174,75,0.15);
-}
+    .btn{
+      border:none;
+      cursor:pointer;
+      font-weight: 700;
+      letter-spacing: .2px;
+      border-radius: 12px;
+      padding: 14px 22px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+      user-select:none;
+    }
 
-.step h3 {
-  font-size: 20px;
-  margin-bottom: 6px;
-}
+    .btn-primary{
+      background: linear-gradient(180deg, rgba(63,174,75,1), rgba(47,142,58,1));
+      color: rgba(10,16,22,.92);
+      box-shadow: 0 18px 40px rgba(63,174,75,.18);
+    }
+    .btn-primary:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 22px 46px rgba(63,174,75,.22);
+    }
 
-.step p {
-  font-size: 15px;
-  color: var(--text-dim);
-}
+    .btn-ghost{
+      background: rgba(255,255,255,.06);
+      color: rgba(234,240,247,.92);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 18px 40px rgba(0,0,0,.22);
+    }
+    .btn-ghost:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+    }
 
-.step:nth-child(1) { transform: rotate(-6deg); }
-.step:nth-child(2) { transform: rotate(5deg); }
-.step:nth-child(3) { transform: rotate(-4deg); }
+    .btn-ghost .arrow{
+      display:inline-block;
+      transform: translateY(1px);
+      margin-left: 10px;
+      opacity:.9;
+    }
 
-@media(max-width: 1200px){
-  .steps-container { display: none; }
-}
+    /* Right side floating cards */
+    .hero-visual{
+      position:relative;
+      height: 520px;
+      width: 100%;
+      pointer-events:none; /* IMPORTANT: never block button clicks */
+    }
 
-/* ========== REST OF PAGE (UNCHANGED STRUCTURE) ========== */
+    /* A faint particle trail */
+    .trail{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(2px 2px at 55% 34%, rgba(255,255,255,.16), transparent 55%),
+        radial-gradient(2px 2px at 74% 56%, rgba(255,255,255,.14), transparent 55%),
+        radial-gradient(2px 2px at 63% 68%, rgba(255,255,255,.12), transparent 55%),
+        radial-gradient(1.5px 1.5px at 81% 42%, rgba(255,255,255,.12), transparent 55%),
+        radial-gradient(1.5px 1.5px at 68% 46%, rgba(255,255,255,.12), transparent 55%);
+      opacity:.30;
+      filter: blur(.2px);
+      mix-blend-mode: screen;
+      pointer-events:none;
+    }
 
-.section {
-  padding: 100px 24px;
-  background: #0f1723;
-  text-align: center;
-}
+    .step-card{
+      position:absolute;
+      right: 0;
+      width: 360px;
+      padding: 18px 18px 18px 18px;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow:
+        0 30px 70px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.12);
+      backdrop-filter: blur(14px) saturate(1.2);
+      -webkit-backdrop-filter: blur(14px) saturate(1.2);
+      transform-style: preserve-3d;
+      will-change: transform;
+      overflow:hidden;
+    }
 
-.section h2 {
-  font-size: 32px;
-  margin-bottom: 40px;
-}
+    /* Inner “glow rim” */
+    .step-card::before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 35% 35%, rgba(63,174,75,.32), transparent 52%);
+      filter: blur(26px) saturate(1.3);
+      opacity:.55;
+      transform: translate3d(0,0,-1px);
+      pointer-events:none;
+    }
 
-footer {
-  padding: 50px 24px;
-  text-align: center;
-  font-size: 14px;
-  color: var(--text-dim);
-}
+    /* Subtle top highlight line like the mock */
+    .step-card::after{
+      content:"";
+      position:absolute; left:12px; right:12px; top:10px; height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+      opacity:.7;
+      pointer-events:none;
+    }
 
-</style>
+    .step-row{
+      display:flex;
+      align-items:flex-start;
+      gap: 14px;
+      position:relative;
+      z-index:2;
+    }
+
+    .step-badge{
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      font-weight: 800;
+      color: rgba(10,16,22,.88);
+      background: radial-gradient(circle at 30% 30%, rgba(124,255,140,1), rgba(63,174,75,1));
+      box-shadow:
+        0 10px 25px rgba(63,174,75,.22),
+        inset 0 1px 0 rgba(255,255,255,.25);
+      flex: 0 0 auto;
+    }
+
+    .step-title{
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 1.1;
+      margin-top: 2px;
+      color: rgba(234,240,247,.92);
+    }
+
+    .step-desc{
+      margin-top: 6px;
+      color: rgba(160,168,181,.92);
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    /* Card positions + “mock” angles */
+    .card1{
+      top: 60px;
+      transform: rotate(-9deg) translate3d(0,0,0);
+    }
+    .card2{
+      top: 210px;
+      transform: rotate(6deg) translate3d(0,0,0);
+      opacity: .95;
+    }
+    .card3{
+      top: 365px;
+      transform: rotate(-7deg) translate3d(0,0,0);
+      opacity: .92;
+    }
+
+    /* Floating animation */
+    @keyframes floaty1{ from{transform: translate3d(0,0,0) rotate(-9deg);} to{transform: translate3d(0,-10px,0) rotate(-9deg);} }
+    @keyframes floaty2{ from{transform: translate3d(0,0,0) rotate(6deg);}  to{transform: translate3d(0,12px,0) rotate(6deg);} }
+    @keyframes floaty3{ from{transform: translate3d(0,0,0) rotate(-7deg);} to{transform: translate3d(0,-8px,0) rotate(-7deg);} }
+
+    .step-card.card1{ animation: floaty1 5.6s ease-in-out infinite alternate; }
+    .step-card.card2{ animation: floaty2 6.2s ease-in-out infinite alternate; }
+    .step-card.card3{ animation: floaty3 5.2s ease-in-out infinite alternate; }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .hero-glow, .step-card.card1, .step-card.card2, .step-card.card3 { animation: none !important; }
+      html{scroll-behavior:auto;}
+    }
+
+    /* ========= BELOW HERO (your original sections preserved) ========= */
+    .below{
+      width:min(1100px, calc(100% - 40px));
+      margin: 70px auto 0;
+      padding-bottom: 70px;
+    }
+
+    .product-preview{
+      margin: 60px auto 90px;
+      max-width: 1100px;
+      height: 420px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(700px 300px at 25% 20%, rgba(63,174,75,.14), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow-2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(160,168,181,.92);
+      font-size: 18px;
+      overflow:hidden;
+    }
+
+    .section{
+      padding: 90px 24px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 20px;
+      margin: 28px 0;
+    }
+    .section h2{
+      text-align:center;
+      font-size: 32px;
+      margin-bottom: 50px;
+      letter-spacing: -.3px;
+    }
+
+    .problem-card{
+      max-width: 780px;
+      margin: 0 auto;
+      background: rgba(14,26,43,.60);
+      padding: 54px 56px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      box-shadow: var(--shadow-2);
+    }
+    .problem-card ul{
+      list-style:none;
+      color: rgba(160,168,181,.95);
+      font-size: 19px;
+      line-height: 2.05;
+      padding: 0;
+    }
+    .problem-card li{ margin-bottom: 12px; }
+    .problem-card li::before{
+      content:"•";
+      color: var(--green);
+      display:inline-block;
+      width:1em;
+      margin-right: 10px;
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .feature{
+      background: rgba(14,26,43,.58);
+      padding: 26px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-2);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .feature::before{
+      content:"";
+      position:absolute; inset:-50%;
+      background: radial-gradient(circle at 30% 30%, rgba(63,174,75,.18), transparent 55%);
+      filter: blur(28px);
+      opacity:.0;
+      transition: opacity .2s ease;
+      pointer-events:none;
+    }
+    .feature:hover{
+      transform: translateY(-4px);
+      border-color: rgba(63,174,75,.25);
+      background: rgba(14,26,43,.66);
+    }
+    .feature:hover::before{opacity:.9;}
+    .feature h3{ font-size: 18px; margin-bottom: 10px; }
+    .feature p{ color: rgba(160,168,181,.95); }
+
+    .who-grid{
+      max-width: 900px;
+      margin: 0 auto;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      font-size: 18px;
+    }
+    .who-item{
+      background: rgba(14,26,43,.58);
+      padding: 22px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-2);
+      transition: transform .18s ease, border-color .18s ease;
+      text-align:center;
+    }
+    .who-item:hover{
+      transform: translateY(-3px);
+      border-color: rgba(63,174,75,.24);
+    }
+
+    .secondary-cta{
+      padding: 80px 24px;
+      text-align:center;
+    }
+
+    footer{
+      padding: 50px 24px 80px;
+      font-size: 14px;
+      color: rgba(160,168,181,.92);
+      text-align:center;
+    }
+    footer a{
+      color: var(--green);
+      text-decoration:none;
+      margin: 0 10px;
+    }
+
+    /* ========= RESPONSIVE ========= */
+    @media (max-width: 980px){
+      .hero-content{
+        grid-template-columns: 1fr;
+        padding: 120px 26px 44px;
+        gap: 26px;
+      }
+      .hero-visual{ height: 420px; }
+      .step-card{ width: min(360px, 86%); left: 50%; right: auto; transform: translateX(-50%) rotate(-6deg); }
+      .card2{ top: 180px; transform: translateX(-50%) rotate(6deg); }
+      .card3{ top: 320px; transform: translateX(-50%) rotate(-7deg); }
+      .nav-links{ display:none; } /* clean mobile look */
+      h1{ font-size: 52px; }
+    }
+
+    @media (max-width: 520px){
+      .page{ width: calc(100% - 22px); margin-top: 24px; }
+      .hero-shell{ padding: 14px; border-radius: 30px; }
+      .hero-frame{ border-radius: 26px; min-height: 720px; }
+      .hero-nav{ top: 16px; left: 16px; right: 16px; }
+      .brand span{ font-size: 18px; }
+      .brand img{ width: 40px; height: 40px; }
+      h1{ font-size: 44px; }
+      .hero-sub{ font-size: 16px; }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="page">
+    <!-- HERO -->
+    <section class="hero-shell" aria-label="Hero">
+      <div class="hero-frame" id="top">
+        <div class="hero-glow" aria-hidden="true"></div>
 
-<!-- HERO -->
-<div class="hero-wrapper">
-  <div class="hero-shell">
+        <header class="hero-nav">
+          <div class="brand">
+            <img src="assets/logo.png" alt="Clickument Logo" />
+            <span>Clickument</span>
+          </div>
 
-    <div class="nav">
-      <img src="assets/logo.png" alt="Clickument">
-      <div class="nav-links">
-        <a href="#">Pricing</a>
-        <a href="#">Documentation</a>
-        <a href="#">Blog</a>
-        <a href="#">Login</a>
-        <a href="#" class="btn-small">Get Early Access</a>
+          <nav class="nav-links" aria-label="Primary navigation">
+            <a href="#pricing">Pricing</a>
+            <a href="#documentation">Documentation</a>
+            <a href="#blog">Blog</a>
+            <a href="#login">Login</a>
+
+            <button class="nav-cta"
+              data-tally-open="xXaba9"
+              data-tally-layout="modal"
+              data-tally-width="500">
+              Get Early Access
+            </button>
+          </nav>
+
+          <!-- Mobile: keep just CTA -->
+          <button class="nav-cta mobile-cta"
+            data-tally-open="xXaba9"
+            data-tally-layout="modal"
+            data-tally-width="500"
+            style="display:none;">
+            Get Early Access
+          </button>
+        </header>
+
+        <div class="hero-content">
+          <div class="hero-left">
+            <div class="pill">
+              <span class="dot" aria-hidden="true"></span>
+              Built for QA &amp; Teams
+            </div>
+
+            <h1>
+              Turn Clicks Into
+              <span class="h1-accent">Structured Documentation</span>
+            </h1>
+
+            <p class="hero-sub">
+              Capture screenshots, generate steps, and export polished documentation in seconds.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary"
+                data-tally-open="xXaba9"
+                data-tally-layout="modal"
+                data-tally-width="500">
+                Get Early Access
+              </button>
+
+              <button class="btn btn-ghost" id="seeDemoBtn" type="button">
+                See Demo <span class="arrow">›</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-visual" id="heroVisual" aria-hidden="true">
+              <div class="trail"></div>
+
+              <div class="step-card card1" data-depth="16">
+                <div class="step-row">
+                  <div class="step-badge">1</div>
+                  <div>
+                    <div class="step-title">Step 1</div>
+                    <div class="step-desc">Click “Login” button</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-card card2" data-depth="22">
+                <div class="step-row">
+                  <div class="step-badge">2</div>
+                  <div>
+                    <div class="step-title">Step 2</div>
+                    <div class="step-desc">Enter email address</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-card card3" data-depth="18">
+                <div class="step-row">
+                  <div class="step-badge">3</div>
+                  <div>
+                    <div class="step-title">Step 3</div>
+                    <div class="step-desc">Export to Markdown</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
+    </section>
+
+    <!-- BELOW HERO (your original content stays) -->
+    <div class="below">
+      <div class="product-preview" id="demo">
+        Product preview coming soon.
+      </div>
+
+      <div class="section" id="problem">
+        <h2>The Problem</h2>
+        <div class="problem-card">
+          <ul>
+            <li>Screenshots are messy and inconsistent</li>
+            <li>Documentation takes too long to create</li>
+            <li>QA evidence is manual and repetitive</li>
+            <li>Onboarding workflows lack structure</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section" id="what">
+        <h2>What Clickument Does</h2>
+        <div class="feature-grid">
+          <div class="feature">
+            <h3>Capture Actions Automatically</h3>
+            <p>Convert browser interactions into structured, step-by-step documentation.</p>
+          </div>
+
+          <div class="feature">
+            <h3>Export Clean Documentation</h3>
+            <p>Generate documentation ready for test cases, onboarding, or support guides.</p>
+          </div>
+
+          <div class="feature">
+            <h3>Structured by Design</h3>
+            <p>Built for QA teams, product teams, and internal documentation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="who">
+        <h2>Who It’s For</h2>
+        <div class="who-grid">
+          <div class="who-item">QA Engineers</div>
+          <div class="who-item">Product Teams</div>
+          <div class="who-item">Startup Founders</div>
+          <div class="who-item">Internal Documentation Teams</div>
+        </div>
+      </div>
+
+      <div class="secondary-cta">
+        <h2>Ready to simplify documentation?</h2>
+        <br><br>
+        <button class="btn btn-primary"
+          data-tally-open="xXaba9"
+          data-tally-layout="modal"
+          data-tally-width="500">
+          Join Early Access
+        </button>
+      </div>
+
+      <!-- Placeholder sections for nav links -->
+      <div class="section" id="pricing">
+        <h2>Pricing</h2>
+        <div class="problem-card">
+          <ul>
+            <li>Launching soon — join early access for first pricing details.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section" id="documentation">
+        <h2>Documentation</h2>
+        <div class="problem-card">
+          <ul>
+            <li>Docs will be published alongside the Chrome Web Store launch.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section" id="blog">
+        <h2>Blog</h2>
+        <div class="problem-card">
+          <ul>
+            <li>Coming soon — build updates, QA workflows, and templates.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section" id="login">
+        <h2>Login</h2>
+        <div class="problem-card">
+          <ul>
+            <li>Account features are planned for V2. For now: early access signup.</li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        <div>
+          <a href="privacy.html">Privacy Policy</a> |
+          <a href="terms.html">Terms</a>
+        </div>
+
+        <div style="margin-top:20px;">
+          <a href="https://x.com/clickument" target="_blank" rel="noopener">X</a>
+          <a href="https://www.linkedin.com/company/clickument/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/clickument" target="_blank" rel="noopener">Instagram</a>
+        </div>
+
+        <div style="margin-top:20px;">
+          Contact: <a href="mailto:hello@clickument.co.uk">hello@clickument.co.uk</a>
+        </div>
+      </footer>
     </div>
-
-    <div class="hero-content">
-      <div class="badge">Built for QA & Teams</div>
-
-      <h1>
-        Turn Clicks Into<br>
-        <span>Structured Documentation</span>
-      </h1>
-
-      <div class="subtext">
-        Capture screenshots, generate steps, and export polished
-        documentation in seconds.
-      </div>
-
-      <div class="cta-row">
-        <button class="btn-primary">Get Early Access</button>
-        <button class="btn-secondary">See Demo</button>
-      </div>
-    </div>
-
-    <div class="steps-container">
-      <div class="step">
-        <h3>Step 1</h3>
-        <p>Click “Login” button</p>
-      </div>
-
-      <div class="step">
-        <h3>Step 2</h3>
-        <p>Enter email address</p>
-      </div>
-
-      <div class="step">
-        <h3>Step 3</h3>
-        <p>Export to Markdown</p>
-      </div>
-    </div>
-
   </div>
-</div>
 
-<!-- PROBLEM -->
-<div class="section">
-  <h2>The Problem</h2>
-  <div class="problem-card">
-    <ul>
-      <li>Screenshots are messy and inconsistent</li>
-      <li>Documentation takes too long to create</li>
-      <li>QA evidence is manual and repetitive</li>
-      <li>Onboarding workflows lack structure</li>
-    </ul>
-  </div>
-</div>
+  <!-- Tally -->
+  <script src="https://tally.so/widgets/embed.js"></script>
 
-<!-- FEATURES -->
-<div class="section">
-  <h2>What Clickument Does</h2>
-  <div class="feature-grid">
-    <div class="feature">
-      <h3>Capture Actions Automatically</h3>
-      <p>Convert browser interactions into structured documentation.</p>
-    </div>
-    <div class="feature">
-      <h3>Export Clean Documentation</h3>
-      <p>Generate documentation ready for test cases or onboarding.</p>
-    </div>
-    <div class="feature">
-      <h3>Structured by Design</h3>
-      <p>Built for QA teams, product teams, and internal documentation.</p>
-    </div>
-  </div>
-</div>
+  <script>
+    // Keep mobile clean: show CTA button on the right when nav links are hidden
+    (function(){
+      const mobileCta = document.querySelector(".mobile-cta");
+      const mq = window.matchMedia("(max-width: 980px)");
+      const apply = () => {
+        if(!mobileCta) return;
+        mobileCta.style.display = mq.matches ? "inline-flex" : "none";
+      };
+      apply();
+      mq.addEventListener?.("change", apply);
+    })();
 
-<footer>
-  <div>
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms</a>
-  </div>
-  <div style="margin-top:20px;">
-    Contact: <a href="mailto:hello@clickument.co.uk">hello@clickument.co.uk</a>
-  </div>
-</footer>
+    // See Demo scroll
+    document.getElementById("seeDemoBtn")?.addEventListener("click", () => {
+      document.getElementById("demo")?.scrollIntoView({behavior:"smooth", block:"start"});
+    });
 
-<script src="https://tally.so/widgets/embed.js"></script>
+    // Parallax tilt (visual-only). DOES NOT block clicks because hero-visual has pointer-events:none.
+    (function(){
+      const visual = document.getElementById("heroVisual");
+      if(!visual) return;
 
+      const cards = Array.from(visual.querySelectorAll(".step-card"));
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if(reduce.matches) return;
+
+      let targetX = 0, targetY = 0, curX = 0, curY = 0;
+
+      function onMove(e){
+        const r = visual.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;   // 0..1
+        const y = (e.clientY - r.top) / r.height;   // 0..1
+        targetX = (x - 0.5) * 2; // -1..1
+        targetY = (y - 0.5) * 2;
+      }
+
+      function tick(){
+        // smooth
+        curX += (targetX - curX) * 0.08;
+        curY += (targetY - curY) * 0.08;
+
+        cards.forEach((card) => {
+          const depth = Number(card.dataset.depth || 14);
+          const rx = (-curY * 4).toFixed(2);
+          const ry = (curX * 6).toFixed(2);
+          const tx = (curX * depth).toFixed(2);
+          const ty = (curY * depth).toFixed(2);
+
+          // preserve base rotate from CSS by appending a gentle 3D tilt + translate
+          card.style.transform = card.classList.contains("card1")
+            ? `translate3d(${tx}px, ${ty}px, 0) rotate(-9deg) rotateX(${rx}deg) rotateY(${ry}deg)`
+            : card.classList.contains("card2")
+              ? `translate3d(${tx}px, ${ty}px, 0) rotate(6deg) rotateX(${rx}deg) rotateY(${ry}deg)`
+              : `translate3d(${tx}px, ${ty}px, 0) rotate(-7deg) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        });
+
+        requestAnimationFrame(tick);
+      }
+
+      // Mouse only; touch devices will just get the float animation (still looks like mock)
+      window.addEventListener("mousemove", onMove, {passive:true});
+      tick();
+    })();
+  </script>
 </body>
 </html>
