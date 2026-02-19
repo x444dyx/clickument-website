@@ -11,7 +11,9 @@
 <style>
 :root {
   --green: #3FAE4B;
+  --green-bright: #46c354;
   --navy: #071421;
+  --text-dim: #A0A8B5;
 }
 
 * {
@@ -26,47 +28,42 @@ body {
   color: white;
 }
 
-/* ============================= */
-/* HERO WRAPPER */
-/* ============================= */
+/* ================= HERO ================= */
 
 .hero-wrapper {
   padding: 40px;
-  display: flex;
-  justify-content: center;
 }
 
 .hero-shell {
   position: relative;
   width: 100%;
   max-width: 1400px;
-  min-height: 700px;
-  border-radius: 48px;
+  margin: 0 auto;
+  min-height: 760px;
+  border-radius: 56px;
   overflow: hidden;
-  padding: 60px 80px;
-
+  padding: 70px 80px;
   background:
-    radial-gradient(circle at 70% 40%, rgba(63,174,75,0.45), transparent 50%),
-    radial-gradient(circle at 85% 80%, rgba(63,174,75,0.25), transparent 60%),
+    radial-gradient(circle at 70% 35%, rgba(63,174,75,0.55), transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(63,174,75,0.35), transparent 60%),
     linear-gradient(135deg, #071421 0%, #0b1e2e 100%);
-
   box-shadow:
-    0 0 100px rgba(63,174,75,0.15),
-    inset 0 0 80px rgba(255,255,255,0.02);
+    0 0 120px rgba(63,174,75,0.18),
+    inset 0 0 120px rgba(255,255,255,0.02);
 }
 
-/* ============================= */
 /* NAV */
-/* ============================= */
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 3;
 }
 
 .nav img {
-  width: 180px;
+  width: 190px;
 }
 
 .nav-links {
@@ -74,28 +71,28 @@ body {
   gap: 36px;
   align-items: center;
   font-size: 15px;
-  opacity: 0.85;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
+  opacity: 0.85;
 }
 
 .nav-links .btn-small {
   padding: 10px 18px;
   background: var(--green);
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
 }
 
-/* ============================= */
 /* HERO CONTENT */
-/* ============================= */
 
 .hero-content {
-  margin-top: 100px;
-  max-width: 600px;
+  margin-top: 120px;
+  max-width: 640px;
+  position: relative;
+  z-index: 3;
 }
 
 .badge {
@@ -104,87 +101,109 @@ body {
   background: rgba(255,255,255,0.06);
   border-radius: 999px;
   font-size: 14px;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 h1 {
-  font-size: 64px;
-  line-height: 1.1;
+  font-size: 68px;
+  line-height: 1.05;
   font-weight: 800;
 }
 
 h1 span {
-  color: var(--green);
+  color: var(--green-bright);
 }
 
 .subtext {
-  margin-top: 25px;
+  margin-top: 28px;
   font-size: 18px;
-  opacity: 0.75;
+  color: var(--text-dim);
 }
 
 .cta-row {
-  margin-top: 40px;
+  margin-top: 45px;
   display: flex;
   gap: 18px;
 }
 
 .btn-primary {
-  padding: 16px 34px;
+  padding: 18px 36px;
   background: var(--green);
-  border-radius: 12px;
+  border-radius: 14px;
   font-weight: 600;
   border: none;
   cursor: pointer;
 }
 
 .btn-secondary {
-  padding: 16px 34px;
+  padding: 18px 36px;
   background: rgba(255,255,255,0.06);
-  border-radius: 12px;
+  border-radius: 14px;
   font-weight: 500;
   border: 1px solid rgba(255,255,255,0.1);
   cursor: pointer;
 }
 
-/* ============================= */
-/* FLOATING STEP CARDS */
-/* ============================= */
+/* STEP CARDS */
 
-.step {
+.steps-container {
   position: absolute;
   right: 120px;
-  width: 300px;
-  padding: 28px;
-  border-radius: 24px;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  pointer-events: none; /* critical */
+}
 
-  background: rgba(255,255,255,0.07);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(255,255,255,0.15);
-
+.step {
+  width: 360px;
+  padding: 34px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(22px);
+  border: 1px solid rgba(255,255,255,0.2);
   box-shadow:
-    0 20px 60px rgba(0,0,0,0.5),
-    0 0 40px rgba(63,174,75,0.15);
+    0 30px 80px rgba(0,0,0,0.55),
+    0 0 60px rgba(63,174,75,0.15);
 }
 
 .step h3 {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 6px;
 }
 
 .step p {
-  opacity: 0.7;
-  font-size: 14px;
+  font-size: 15px;
+  color: var(--text-dim);
 }
 
-.step-1 { top: 180px; transform: rotate(-6deg); }
-.step-2 { top: 330px; right: 60px; transform: rotate(4deg); }
-.step-3 { top: 500px; transform: rotate(-5deg); }
+.step:nth-child(1) { transform: rotate(-6deg); }
+.step:nth-child(2) { transform: rotate(5deg); }
+.step:nth-child(3) { transform: rotate(-4deg); }
 
-@media(max-width: 1100px){
-  .step {
-    display: none;
-  }
+@media(max-width: 1200px){
+  .steps-container { display: none; }
+}
+
+/* ========== REST OF PAGE (UNCHANGED STRUCTURE) ========== */
+
+.section {
+  padding: 100px 24px;
+  background: #0f1723;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+footer {
+  padding: 50px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-dim);
 }
 
 </style>
@@ -192,10 +211,10 @@ h1 span {
 
 <body>
 
+<!-- HERO -->
 <div class="hero-wrapper">
   <div class="hero-shell">
 
-    <!-- NAV -->
     <div class="nav">
       <img src="assets/logo.png" alt="Clickument">
       <div class="nav-links">
@@ -207,7 +226,6 @@ h1 span {
       </div>
     </div>
 
-    <!-- HERO TEXT -->
     <div class="hero-content">
       <div class="badge">Built for QA & Teams</div>
 
@@ -227,24 +245,69 @@ h1 span {
       </div>
     </div>
 
-    <!-- FLOATING CARDS -->
-    <div class="step step-1">
-      <h3>Step 1</h3>
-      <p>Click “Login” button</p>
-    </div>
+    <div class="steps-container">
+      <div class="step">
+        <h3>Step 1</h3>
+        <p>Click “Login” button</p>
+      </div>
 
-    <div class="step step-2">
-      <h3>Step 2</h3>
-      <p>Enter email address</p>
-    </div>
+      <div class="step">
+        <h3>Step 2</h3>
+        <p>Enter email address</p>
+      </div>
 
-    <div class="step step-3">
-      <h3>Step 3</h3>
-      <p>Export to Markdown</p>
+      <div class="step">
+        <h3>Step 3</h3>
+        <p>Export to Markdown</p>
+      </div>
     </div>
 
   </div>
 </div>
+
+<!-- PROBLEM -->
+<div class="section">
+  <h2>The Problem</h2>
+  <div class="problem-card">
+    <ul>
+      <li>Screenshots are messy and inconsistent</li>
+      <li>Documentation takes too long to create</li>
+      <li>QA evidence is manual and repetitive</li>
+      <li>Onboarding workflows lack structure</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section">
+  <h2>What Clickument Does</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <h3>Capture Actions Automatically</h3>
+      <p>Convert browser interactions into structured documentation.</p>
+    </div>
+    <div class="feature">
+      <h3>Export Clean Documentation</h3>
+      <p>Generate documentation ready for test cases or onboarding.</p>
+    </div>
+    <div class="feature">
+      <h3>Structured by Design</h3>
+      <p>Built for QA teams, product teams, and internal documentation.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms</a>
+  </div>
+  <div style="margin-top:20px;">
+    Contact: <a href="mailto:hello@clickument.co.uk">hello@clickument.co.uk</a>
+  </div>
+</footer>
+
+<script src="https://tally.so/widgets/embed.js"></script>
 
 </body>
 </html>
