@@ -181,8 +181,29 @@
   flex-wrap:nowrap;   /* prevents stacking */
 }
 
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.2px;
+  color: rgba(234,240,247,.85);
+}
+
+.nav-links a{
+  position:relative;
+  transition: color .2s ease;
+}
+
+.nav-links a:hover{
+  color: #fff;
+}
+
     .nav-cta{
-      padding:10px 16px;
+     padding:12px 22px;
+     font-size:14px;
+     line-height:1;
       border-radius: 12px;
       background: rgba(63,174,75,.22);
       border: 1px solid rgba(63,174,75,.35);
