@@ -12,9 +12,9 @@
 <style>
 :root{
   --green:#3FAE4B;
+  --blue:#00aaff;
   --bg0:#071220;
   --bg1:#0B1624;
-  --panel:#0E1A2B;
   --text:#EAF0F7;
   --muted:#A0A8B5;
   --radius-outer:44px;
@@ -23,12 +23,13 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif;}
+
 body{
   color:var(--text);
   background:linear-gradient(180deg,var(--bg0),var(--bg1));
 }
 
-/* ================= HERO ================= */
+/* ================= LAYOUT ================= */
 
 .page{
   width:min(1200px,calc(100% - 40px));
@@ -41,7 +42,7 @@ body{
   padding:18px;
   margin-top:60px;
   background:
-    radial-gradient(1200px 700px at 70% 40%, rgba(63,174,75,.12), transparent 60%),
+    radial-gradient(1200px 700px at 70% 40%, rgba(63,174,75,.10), transparent 60%),
     linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   border:1px solid rgba(255,255,255,.08);
   box-shadow:var(--shadow-1);
@@ -56,6 +57,35 @@ body{
   position:relative;
   overflow:hidden;
 }
+
+/* ================= SECTION MOUSE GLOW ================= */
+
+.section-frame::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      900px circle at var(--mx) var(--my),
+      rgba(var(--glow),0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px circle at calc(100% - var(--mx)) calc(100% - var(--my)),
+      rgba(0,170,255,0.08),
+      transparent 65%
+    );
+  filter:blur(90px) saturate(1.4);
+  opacity:0;
+  transition:opacity .25s ease;
+  pointer-events:none;
+}
+
+.section-frame:hover::before{
+  opacity:1;
+}
+
+/* ================= TYPO ================= */
 
 h1{
   font-size:64px;
@@ -87,62 +117,19 @@ h2{
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 }
 
-/* ================= GLOW CARD SYSTEM ================= */
+/* ================= CARDS ================= */
 
-.glow-card{
-  position:relative;
-  background:rgba(14,26,43,.6);
+.card{
+  background:rgba(14,26,43,.65);
   border:1px solid rgba(255,255,255,.08);
   border-radius:18px;
   padding:28px;
-  transition:transform .25s ease;
-  overflow:hidden;
-  --glow:63,174,75;
+  transition:transform .25s ease, border-color .25s ease;
 }
 
-.glow-card:hover{
-  transform:translateY(-6px);
-}
-
-.glow-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(
-    600px circle at var(--x) var(--y),
-    rgba(var(--glow),.35),
-    transparent 50%
-  );
-  filter:blur(45px) saturate(1.5);
-  opacity:0;
-  transition:opacity .2s ease;
-  pointer-events:none;
-}
-
-.glow-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  padding:1px;
-  background:radial-gradient(
-    400px circle at var(--x) var(--y),
-    rgba(var(--glow),.9),
-    transparent 60%
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-  opacity:0;
-  transition:opacity .2s ease;
-  pointer-events:none;
-}
-
-.glow-card:hover::before,
-.glow-card:hover::after{
-  opacity:1;
+.section-frame:hover .card{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,.16);
 }
 
 /* ================= SCROLL REVEAL ================= */
@@ -194,9 +181,9 @@ Turn Clicks Into <br>
 
 <!-- PROBLEM -->
 <section class="section-shell reveal">
-<div class="section-frame">
+<div class="section-frame" data-glow="63,174,75">
 <h2>The Problem</h2>
-<div class="glow-card" data-color="63,174,75">
+<div class="card">
 <ul style="line-height:2;color:var(--muted)">
 <li>Screenshots are messy and inconsistent</li>
 <li>Documentation takes too long</li>
@@ -209,21 +196,21 @@ Turn Clicks Into <br>
 
 <!-- WHAT -->
 <section class="section-shell reveal">
-<div class="section-frame">
+<div class="section-frame" data-glow="63,174,75">
 <h2>What Clickument Does</h2>
 <div class="feature-grid">
 
-<div class="glow-card" data-color="63,174,75">
+<div class="card">
 <h3>Capture Actions Automatically</h3>
 <p>Convert browser interactions into structured documentation.</p>
 </div>
 
-<div class="glow-card" data-color="0,170,255">
+<div class="card">
 <h3>Export Clean Documentation</h3>
 <p>Generate documentation ready for test cases or onboarding.</p>
 </div>
 
-<div class="glow-card" data-color="255,140,0">
+<div class="card">
 <h3>Structured by Design</h3>
 <p>Built specifically for QA and product teams.</p>
 </div>
@@ -234,13 +221,13 @@ Turn Clicks Into <br>
 
 <!-- WHO -->
 <section class="section-shell reveal">
-<div class="section-frame">
+<div class="section-frame" data-glow="0,170,255">
 <h2>Who It’s For</h2>
 <div class="who-grid">
-<div class="glow-card">QA Engineers</div>
-<div class="glow-card">Product Teams</div>
-<div class="glow-card">Startup Founders</div>
-<div class="glow-card">Internal Documentation Teams</div>
+<div class="card">QA Engineers</div>
+<div class="card">Product Teams</div>
+<div class="card">Startup Founders</div>
+<div class="card">Internal Documentation Teams</div>
 </div>
 </div>
 </section>
@@ -252,19 +239,32 @@ Turn Clicks Into <br>
 </div>
 
 <script>
-/* Glow Logic */
-document.querySelectorAll(".glow-card").forEach(card=>{
-  const color=card.getAttribute("data-color")||"63,174,75";
-  card.style.setProperty("--glow",color);
 
-  card.addEventListener("mousemove",e=>{
-    const rect=card.getBoundingClientRect();
-    card.style.setProperty("--x",(e.clientX-rect.left)+"px");
-    card.style.setProperty("--y",(e.clientY-rect.top)+"px");
+/* SECTION-WIDE MOUSE GLOW */
+
+document.querySelectorAll(".section-frame").forEach(section=>{
+
+  const glow = section.getAttribute("data-glow") || "63,174,75";
+  section.style.setProperty("--glow", glow);
+
+  section.addEventListener("mousemove",e=>{
+    const rect = section.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    section.style.setProperty("--mx", x + "px");
+    section.style.setProperty("--my", y + "px");
   });
+
+  section.addEventListener("mouseleave",()=>{
+    section.style.removeProperty("--mx");
+    section.style.removeProperty("--my");
+  });
+
 });
 
 /* Scroll reveal */
+
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -274,6 +274,7 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:.15});
 
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
 </script>
 
 </body>
