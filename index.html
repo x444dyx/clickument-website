@@ -615,6 +615,8 @@
     
     /* ===== FAQ ===== */
 
+/* ===== FAQ (Smooth Version) ===== */
+
 .faq-container{
   max-width: 900px;
   margin: 0 auto;
@@ -648,14 +650,16 @@
 .faq-icon{
   font-size:20px;
   opacity:.7;
-  transition:transform .2s ease;
+  transition:transform .25s ease;
 }
 
 .faq-answer{
-  max-height:0;
+  height:0;
   overflow:hidden;
-  transition:max-height .3s ease;
   padding:0 22px;
+  opacity:0;
+  transform:translateY(-6px);
+  transition:height .25s ease, opacity .2s ease, transform .2s ease;
   color:rgba(160,168,181,.95);
   font-size:15px;
 }
@@ -669,11 +673,6 @@
 .faq-answer ul,
 .faq-answer ol{
   padding-left:18px;
-}
-
-.faq-item.active .faq-answer{
-  max-height:800px;
-  padding-bottom:20px;
 }
 
 .faq-item.active .faq-icon{
@@ -1288,11 +1287,29 @@
       });
     })();
     
-    // FAQ accordion
-document.querySelectorAll(".faq-question").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const item = btn.parentElement;
-    item.classList.toggle("active");
+// Smooth FAQ accordion
+document.querySelectorAll(".faq-question").forEach(button => {
+  button.addEventListener("click", () => {
+    const item = button.parentElement;
+    const answer = item.querySelector(".faq-answer");
+
+    const isOpen = item.classList.contains("active");
+
+    // Close all first (optional premium behaviour)
+    document.querySelectorAll(".faq-item").forEach(i => {
+      i.classList.remove("active");
+      const a = i.querySelector(".faq-answer");
+      a.style.height = 0;
+      a.style.opacity = 0;
+      a.style.transform = "translateY(-6px)";
+    });
+
+    if (!isOpen) {
+      item.classList.add("active");
+      answer.style.height = answer.scrollHeight + "px";
+      answer.style.opacity = 1;
+      answer.style.transform = "translateY(0)";
+    }
   });
 });
   </script>
