@@ -612,6 +612,73 @@
       width:18px;height:18px;
       fill: rgba(234,240,247,.92);
     }
+    
+    /* ===== FAQ ===== */
+
+.faq-container{
+  max-width: 900px;
+  margin: 0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.faq-item{
+  background: rgba(14,26,43,.58);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow-2);
+  overflow:hidden;
+}
+
+.faq-question{
+  width:100%;
+  background:none;
+  border:none;
+  color:var(--text);
+  padding:20px 22px;
+  font-size:16px;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.faq-icon{
+  font-size:20px;
+  opacity:.7;
+  transition:transform .2s ease;
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease;
+  padding:0 22px;
+  color:rgba(160,168,181,.95);
+  font-size:15px;
+}
+
+.faq-answer p,
+.faq-answer ul,
+.faq-answer ol{
+  margin:12px 0;
+}
+
+.faq-answer ul,
+.faq-answer ol{
+  padding-left:18px;
+}
+
+.faq-item.active .faq-answer{
+  max-height:800px;
+  padding-bottom:20px;
+}
+
+.faq-item.active .faq-icon{
+  transform:rotate(45deg);
+}
 
     /* Responsive */
    /* Responsive */
@@ -956,12 +1023,151 @@
   <!-- NAV SECTIONS -->
 <section class="section-shell" id="faq">
   <div class="section-frame" data-glow="0,170,255">
-    <h2>FAQ</h2>
-    <div class="problem-grid">
-      <div class="problem-item">When is Clickument launching?</div>
-      <div class="problem-item">Will there be a free version?</div>
-      <div class="problem-item">Is this built specifically for QA teams?</div>
-      <div class="problem-item">Will exports support Markdown and PDF?</div>
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What is Clickument?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Clickument is a Chrome extension that lets you capture step-by-step screenshots and automatically generate clean Markdown or PDF documentation.
+          </p>
+          <p>
+            It’s designed for QA testers, product teams, developers, and anyone who needs to document workflows clearly and quickly.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How does Clickument work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ol>
+            <li>Add steps inside the extension</li>
+            <li>Capture screenshots directly from your browser</li>
+            <li>Add text and labels</li>
+            <li>Export as Markdown or PDF</li>
+          </ol>
+          <p>Everything is stored locally in your browser.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is Clickument free?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The free version includes:</p>
+          <ul>
+            <li>Limited daily exports</li>
+            <li>Up to 5 saved scenarios</li>
+          </ul>
+          <p>The Lifetime Unlock removes all limits and enables unlimited usage.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What does the Lifetime Unlock include?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>Unlimited saved scenarios</li>
+            <li>Unlimited exports</li>
+            <li>No daily download limits</li>
+            <li>Lifetime access (one-time payment)</li>
+          </ul>
+          <p>There are no subscriptions.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is my data stored online?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>No.</p>
+          <p>
+            Your scenarios and screenshots are stored locally in your browser.
+            Clickument does not upload or store your documentation on external servers.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do payments work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Payments are processed securely through Stripe.</p>
+          <p>
+            After purchase, you receive a licence key by email which unlocks unlimited usage inside the extension.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What if I reinstall Chrome or change devices?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            You can restore your unlock at any time by entering the same email address and licence key used at checkout.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I get a refund?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            If you experience any issues, contact support within 7–14 days and we’ll help resolve it.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Does Clickument work outside Chrome?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Currently, Clickument works on Google Chrome (Manifest V3).</p>
+          <p>Support for other browsers may be added in the future.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Who is Clickument for?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>QA testers</li>
+            <li>Software developers</li>
+            <li>Product managers</li>
+            <li>Technical writers</li>
+            <li>Support teams</li>
+            <li>Anyone documenting processes</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
