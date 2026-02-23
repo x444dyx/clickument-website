@@ -431,20 +431,19 @@
     }
     
 .product-preview{
-  margin: 60px auto 50px;
+  margin: 80px auto 70px;
   max-width: 1100px;
-  height: 420px;
-  border-radius: 18px;
+  height: 480px;
+  border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.08);
-  background:
-    radial-gradient(700px 300px at 25% 20%, rgba(63,174,75,.14), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  box-shadow: var(--shadow-2);
+  background:#0E1A2B;
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;
-  padding: 0;
 }
 
 .demo-gif{
@@ -959,11 +958,9 @@
     <!-- BELOW HERO -->
     <div class="below">
 <div class="product-preview" id="demo">
-  <img 
-    src="assets/demo.gif" 
-    alt="Clickument demo showing step capture and export"
-    class="demo-gif"
-  />
+  <video autoplay muted loop playsinline class="demo-video">
+    <source src="assets/demo.mp4" type="video/mp4">
+  </video>
 </div>
     </div>
   </div>
