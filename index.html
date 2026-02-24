@@ -8,7 +8,7 @@
   <meta name="description" content="Clickument transforms browser actions into structured, step-by-step documentation. Built for clarity, evidence, and precision." />
 
   <meta property="og:title" content="Clickument — Turn Clicks Into Documentation" />
-  <meta property="og:description" content="Capture structured documentation as you work. Launching soon on the Chrome Web Store." />
+  <meta property="og:description" content="Capture step-by-step screenshots and export clean Markdown or PDF documentation. Install Clickument free on Chrome." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://clickument.com" />
   <meta property="og:image" content="https://clickument.com/assets/logo.png" />
@@ -583,6 +583,13 @@
       border-color: rgba(255,255,255,.14);
     }
 
+    .cta-sub{
+  margin-top:12px;
+  font-size:14px;
+  color:rgba(160,168,181,.85);
+  font-weight:500;
+}
+
     .secondary-cta{ padding: 80px 24px; text-align:center; }
 
     /* Footer */
@@ -866,23 +873,11 @@
       <a href="#faq">FAQ</a>
     </nav>
 
-    <button class="nav-cta"
-      data-tally-open="xXaba9"
-      data-tally-layout="modal"
-      data-tally-width="500">
-      Get Early Access
-    </button>
-
+<button class="nav-cta"
+  onclick="window.open('https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID','_blank')">
+  Add to Chrome
+</button>
   </div>
-
-  <button class="nav-cta mobile-cta"
-    data-tally-open="xXaba9"
-    data-tally-layout="modal"
-    data-tally-width="500"
-    style="display:none;">
-    Get Early Access
-  </button>
-
 </header>
 
         <div class="hero-content">
@@ -903,17 +898,18 @@
 
             <div class="hero-actions">
               <button class="btn btn-primary"
-                data-tally-open="xXaba9"
-                data-tally-layout="modal"
-                data-tally-width="500">
-                Get Early Access
+                onclick="window.open('https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID','_blank')">
+                🧩 Add to Chrome — Free
               </button>
-
+            
               <button class="btn btn-ghost" id="seeDemoBtn" type="button">
                 See Demo <span class="arrow">›</span>
               </button>
             </div>
-          </div>
+            
+            <p class="cta-sub">
+              Free • No signup required • Installs in seconds
+            </p>
 
           <div class="hero-right">
             <div class="hero-visual" id="heroVisual" aria-hidden="true">
@@ -1019,12 +1015,13 @@
   <div class="secondary-cta">
     <h2>Ready to simplify documentation?</h2>
     <br><br>
-    <button class="btn btn-primary"
-      data-tally-open="xXaba9"
-      data-tally-layout="modal"
-      data-tally-width="500">
-      Join Early Access
-    </button>
+<button class="btn btn-primary"
+  onclick="window.open('https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID','_blank')">
+  🧩 Add to Chrome — Free
+</button>
+    <p class="cta-sub">
+  Free • No signup required • Installs in seconds
+</p>
   </div>
 
   <!-- NAV SECTIONS -->
@@ -1201,24 +1198,7 @@
     </div>
   </footer>
 
-  <!-- Tally -->
-  <script src="https://tally.so/widgets/embed.js"></script>
-
   <script>
-    // ✅ Mobile CTA visibility (NO LONGER NEEDED, CSS handles it)
-    // Keeping it harmless: we also ensure it doesn't cause duplication.
-    (function(){
-      const mobileCta = document.querySelector(".mobile-cta");
-      const desktopCta = document.querySelector(".nav-right .nav-cta");
-      const mq = window.matchMedia("(max-width: 980px)");
-      const apply = () => {
-        if(mobileCta) mobileCta.style.display = mq.matches ? "inline-flex" : "none";
-        if(desktopCta) desktopCta.style.display = mq.matches ? "none" : "inline-flex";
-      };
-      apply();
-      mq.addEventListener?.("change", apply);
-    })();
-
     // See Demo scroll
     document.getElementById("seeDemoBtn")?.addEventListener("click", () => {
       document.getElementById("demo")?.scrollIntoView({behavior:"smooth", block:"start"});
