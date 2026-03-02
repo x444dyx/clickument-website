@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,39 +75,66 @@
     <p>Last updated: 2026</p>
 
     <p>
-      Clickument is built for clarity, evidence, and precision. This policy explains what data is handled and how it is used.
+      Clickument is built for clarity, evidence, and precision. This policy explains what data is handled by the Clickument Chrome extension and how it is used.
     </p>
 
     <h2>1. Data Collection</h2>
     <p>
-      Clickument does not collect personal data, browsing history, or external analytics by default.
-      All documentation steps and screenshots are stored locally in the user’s browser unless explicitly exported by the user.
+      Clickument does not collect browsing history, analytics data, tracking information, or advertising identifiers.
+      The extension does not monitor websites visited by users.
     </p>
 
     <h2>2. Local Storage</h2>
     <p>
-      Workflow steps, scenario names, and related data are stored using Chrome storage APIs.
-      This may include local storage and/or Chrome sync storage depending on user configuration.
+      Workflow steps, scenario names, screenshots, and related documentation data are stored locally in the user’s browser using Chrome storage APIs.
+      This data remains on the user’s device unless the user explicitly exports it.
     </p>
 
     <h2>3. Screenshots</h2>
     <p>
-      Screenshots captured by Clickument are stored locally within the browser environment.
-      They are not transmitted to external servers.
+      Screenshots captured using Clickument are stored locally within the browser environment.
+      Screenshots are not uploaded, transmitted, or stored on external servers.
     </p>
 
     <h2>4. Data Export</h2>
     <p>
-      Users may export documentation data manually. Exported files are controlled entirely by the user.
-      Clickument does not receive or store exported content.
+      Users may export documentation manually as Markdown or image files.
+      Exported files are generated locally and saved directly to the user’s device.
+      Clickument does not receive, access, or store exported content.
     </p>
 
-    <h2>5. Third-Party Services</h2>
+    <h2>5. Licence Verification and Remote Communication</h2>
     <p>
-      Clickument does not use third-party tracking scripts, analytics platforms, or advertising networks within the extension.
+      Clickument may communicate with a secure Google Apps Script endpoint for licence validation and optional feedback submission.
+      These communications are limited to the information provided by the user (such as email address and licence key when restoring access).
+      Browsing activity, screenshots, and workflow content are not transmitted.
     </p>
 
-    <h2>6. Contact</h2>
+    <h2>6. Payments</h2>
+    <p>
+      Payments for the Lifetime Unlock are processed securely by Stripe.
+      Clickument does not collect, store, or process credit card or payment information.
+    </p>
+
+    <h2>7. Permissions Justification</h2>
+    <p>
+      Clickument requests only the minimum Chrome permissions necessary:
+      <br><br>
+      <strong>ActiveTab</strong> – to capture a screenshot of the currently visible browser tab when the user requests it.
+      <br>
+      <strong>Storage</strong> – to save scenarios and settings locally in the browser.
+      <br>
+      <strong>Downloads</strong> – to export Markdown files and screenshots to the user’s device.
+      <br>
+      <strong>Google Apps Script host access</strong> – to validate licence keys and process optional feedback submissions.
+    </p>
+
+    <h2>8. Third-Party Services</h2>
+    <p>
+      The Clickument extension does not use advertising networks, tracking pixels, behavioural analytics tools, or third-party marketing scripts.
+    </p>
+
+    <h2>9. Contact</h2>
     <p>
       For privacy-related questions, contact:
       <a href="mailto:hello@clickument.co.uk">hello@clickument.co.uk</a>
